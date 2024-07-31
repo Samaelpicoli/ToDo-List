@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% load bootstrap %}
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card auth-card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Se Registrar no Lista de Tarefas ToDo</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        {{ form|bootstrap }}
+                        <button class="btn btn-primary btn-block">Registrar</button>
+
+                    </form>
+                    <p class="change-form-p">Já possui uma conta? <a href="/accounts/login">Clique Aqui!</a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

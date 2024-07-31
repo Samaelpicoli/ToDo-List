@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Lista de Tarefas</h1>
+        <div class="container dashboard">
+            <div class="col-4 dashboard-box" id="dashboard-lastdays">
+                <h4>Finalizadas nos últimos 30 dias</h4>
+                <span>{{ tasks_feitas_recentemente }}</span>
+            </div>
+            <div class="col-4 dashboard-box" id="dashboard-done">
+                <h4>Tarefas Finalizadas</h4>
+                <span>{{ tasks_finalizadas }}</span>
+            </div>
+            <div class="col-4 dashboard-box" id="dashboard-doing">
+                <h4>Tarefas para Fazer</h4>
+                <span>{{ tasks_fazendo }}</span>
+            </div>
+        </div>
+        <a id="add-link" href="criar/">
+            <div class="col-2 add-div">
+                <i class="fa fa-plus"></i>Adicionar Tarefa
+            </div>
+        </a>
+        <div class="col-9 search-div">
+            <form method="GET" id="search-form">
+                <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa para buscar" value="{{ request.GET.search }}">
+                <i class="fa fa-search" id="search-btn"></i>
+            </form>
+        </div>
+        <div class="col-12 filter-div">
+            <span>Filtrar por:</span>
+            <select name="filter" id="filter" class="form-control">
+                <option value="">Escolha uma opção</option>
+                <option value="fazendo">Tarefas Sendo Feitas</option>
+                <option value="finalizado">Tarefas finalizadas</option>
+            </select>
+        </div>
+        <div class="message">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %}
+                                class="alert alert-{{ message.tags }}"
+                            {% endif %}
+                        >{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <ul class="task-list">
+            {% for task in tasks %}
+            {% if task.status == 'fazendo' %}
+                <li class="task-item">
+            {% else %}
+                <li class="task-item done">
+            {% endif %}
+                    <span><a href="task/{{ task.id }}">{{ task.titulo }}</a></span>
+                    <a href="deletar/{{ task.id }}" class="delete-btn"><span><i class="fa fa-trash"></i></span></a>
+                    <a href="editar/{{ task.id }}">
+                        <span><i class="fa fa-edit"></i></span>   
+                    </a>
+                    <a href="alterarstatus/{{ task.id }}">
+                        <span><i class="fa fa-check"></i></span>   
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            <span class="step-links">
+                {% if tasks.has_previous %}
+                    <a href="?page={{ tasks.previous_page_number }}">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                {% endif %}
+                
+                {% if tasks.paginator.num_pages %}
+                    <span class="current">
+                        {{ tasks.number }} de {{ tasks.paginator.num_pages }}
+                    </span>
+                {% endif %}
+
+                {% if tasks.has_next %}
+                    <a href="?page={{ tasks.next_page_number }}">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    
+
+    <script>
+        
+        $(document).ready(function() {
+            var baseUrl = 'http://127.0.0.1:8000/tasks/';
+            var deleteBtn = $('.delete-btn');
+            var searchBtn = $('#search-btn');
+            var searchForm = $('#search-form');
+            var filter = $('#filter');
+
+            $(deleteBtn).on('click', function(e){
+                e.preventDefault();
+                var delLink = $(this).attr('href');
+                var result = confirm('Quer deletar essa tarefa?');
+                if (result){
+                    window.location.href = delLink;
+                }
+            });
+
+            $(searchBtn).on('click', function(){
+                searchForm.submit();
+            });
+
+            $(filter).change(function() {
+                var filter = $(this).val();
+                window.location.href = baseUrl + '?filter=' + filter;
+            });
+
+        });
+    </script>
+
+    <script>
+        setTimeout(function(){
+            if ($('.message').length > 0) {
+                $('.message').remove();
+            }
+        }, 5000)    // 5000 milisegundos
+    </script>
+{% endblock js %}

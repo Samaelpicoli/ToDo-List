@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load bootstrap %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Editando a tarefa '{{ task.titulo }}'</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <input type="submit" class="btn btn-success criar" value="Editar Tarefa">
+        </form>   
+    </div>
+{% endblock content %}

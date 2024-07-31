@@ -1,0 +1,236 @@
+.container-fluid {
+    padding: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Navbar */
+
+.navbar {
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.nav-link {
+    color: #333;
+    letter-spacing: 1px;
+}
+
+/* Botão de Adicionar */
+
+.add-div {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 25px;
+}
+
+.fa.fa-plus {
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/* Adicionar nova tarefa */
+
+.add-link {
+    text-decoration: none;
+}
+
+/* Busca */
+
+.fa-search {
+    position: absolute;
+    top: 12px;
+    right: 26px;
+    cursor: pointer;
+}
+
+.search-div {
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Lista de Tarefas */
+
+.list-div {
+    padding: 0;
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.task-item {
+    list-style: none;
+    font-size: 20px;
+    height: 50px;
+    padding: 0 15px;
+    padding-top: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.task-item.done {
+    background-color: #ccc;
+}
+
+.fa.fa-trash, .fa.fa-edit, .fa.fa-check {
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.fa.fa-trash {
+    color: #db1e47;
+}
+
+.fa.fa-edit {
+    color: #13c43f;
+}
+
+
+.fa-check .done {
+    color: #3476e2;
+}
+
+
+
+
+/* Messages */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+    
+}
+
+
+/* Pagina inicial */
+
+#inicio {
+    background-color: #f8f9fa;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+
+/* Paginação */
+
+.pagination {
+    margin-bottom: 20px;
+}
+
+.step-links {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-links .current {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Botão de criar nova task */
+
+.criar {
+    margin-bottom: 50px;
+}
+
+/* Login */
+
+.auth-card {
+    margin-bottom: 30px;
+}
+
+/* Autenticação */
+
+.change-form-p {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Filtro */
+.filter-div {
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+#filter {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
+}
+
+/* Dashboard */
+
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 12px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #000000;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+
+#dashboard-lastdays {
+    background-color: #3476e2;
+}
+
+#dashboard-done {
+    background-color: #13C43F;
+}
+
+#dashboard-doing {
+    background-color: #DB1E47;
+}
+
+
+
